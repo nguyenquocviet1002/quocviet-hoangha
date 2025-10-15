@@ -1,0 +1,21 @@
+@import "font";
+@import "reset";
+@import "main";
+
+html {
+  font-size: 15px;
+  font-family: "Barlow";
+}
+
+.pageview {
+  max-width: 420px;
+  margin: 0 auto;
+  // overflow: hidden;
+  position: relative;
+}
+
+:root {
+    --font-1: 'Ephesis';
+    --font-2: 'Black Mango';
+    --color: rgba(0, 50, 99, 1)
+}
