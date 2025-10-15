@@ -19,3 +19,16 @@ html {
     --font-2: 'Black Mango';
     --color: rgba(0, 50, 99, 1)
 }
+
+.form-group {
+  &.error {
+    input, select {
+      border-color: red;
+    }
+  }
+}
+.form-message {
+  font-size: 13px;
+  color: red;
+  padding-left: 5px;
+}

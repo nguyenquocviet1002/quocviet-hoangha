@@ -5,8 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thư mời cưới Quốc Việt & Hoàng Hà</title>
+    <meta property="og:image" content="media/images/page1.jpg" />
+    <link type="image/x-icon" rel="shortcut icon" href="media/images/chu-hi.png" />
     <link rel="stylesheet" href="media/aos/aos.css">
-    <link rel="stylesheet" href="media/css/style.min.css">
+    <link rel="stylesheet" href="media/css/style.min.css?v=1">
 </head>
 
 <body>
@@ -15,7 +17,7 @@
             <div class="screen1__save" data-aos="fade-down">SAVE THE DATE</div>
             <div class="screen1__name" data-aos="fade-down">Hoàng Hà & Quốc Việt</div>
             <div class="screen1__image">
-                <img src="media/images/background.jpg" alt="">
+                <img src="media/images/page1.jpg" alt="">
             </div>
             <div class="screen1__date">
                 <div class="screen1__day" data-aos="fade-down">CHỦ NHẬT</div>
@@ -45,7 +47,7 @@
             <div class="screen2__title" data-aos="fade-down">Thiệp Mời</div>
             <div class="screen2__sub" data-aos="fade-down">THAM DỰ LỄ vu quy CỦA hoàng hà & Quốc việt</div>
             <div class="screen2__image" data-aos="flip-left">
-                <img src="media/images/bg2.JPG" alt="">
+                <img src="media/images/page2.jpg" alt="">
             </div>
             <div class="screen2__box">
                 <div class="screen2__house" data-aos="fade-down">TIỆC CƯỚI NHÀ GÁI</div>
@@ -191,36 +193,54 @@
             </div>
             <div class="screen5__list">
                 <div class="screen5__item" data-aos="fade-right">
-                    <img src="media/images/background.jpg" alt="">
+                    <img src="media/images/album1.jpg" alt="">
                 </div>
                 <div class="screen5__item" data-aos="fade-left">
-                    <img src="media/images/background.jpg" alt="">
+                    <img src="media/images/album2.jpg" alt="">
                 </div>
             </div>
             <div class="screen5__list">
                 <div class="screen5__item" data-aos="fade-right">
-                    <img src="media/images/background.jpg" alt="">
+                    <img src="media/images/album3.jpg" alt="">
                 </div>
-                <div class="screen5__item" data-aos="fade-left">
-                    <img src="media/images/background.jpg" alt="">
+                <div class="screen5__item screen5__item--1" data-aos="fade-left">
+                    <img src="media/images/page2.jpg" alt="">
+                    <img src="media/images/album4.jpg" alt="">
                 </div>
             </div>
             <div class="screen5__list">
                 <div class="screen5__item" data-aos="fade-right">
-                    <img src="media/images/background.jpg" alt="">
+                    <img src="media/images/album5.jpg" alt="">
                 </div>
                 <div class="screen5__item" data-aos="fade-left">
-                    <img src="media/images/background.jpg" alt="">
+                    <img src="media/images/album6.jpg" alt="">
+                </div>
+            </div>
+            <div class="screen5__list">
+                <div class="screen5__item" data-aos="fade-right">
+                    <img src="media/images/album7.jpg" alt="">
+                </div>
+                <div class="screen5__item" data-aos="fade-left">
+                    <img src="media/images/album8.jpg" alt="">
+                </div>
+            </div>
+            <div class="screen5__list">
+                <div class="screen5__item" data-aos="fade-right">
+                    <img src="media/images/album9.jpg" alt="">
+                </div>
+                <div class="screen5__item" data-aos="fade-left">
+                    <img src="media/images/album10.jpg" alt="">
                 </div>
             </div>
         </div>
 
         <div class="screen6">
-            <img src="media/images/background.jpg" alt="">
+            <img src="media/images/final.jpg" alt="">
             <div class="screen6__content" data-aos="fade-down">Thankyou <br>Rất hân hạnh được đón tiếp!</div>
         </div>
     </div>
 
+    <script src="media/aos/jquery.min.js"></script>
     <script src="media/aos/aos.js"></script>
 
     <script>
@@ -229,6 +249,67 @@
             easing: 'ease-out-cubic',
             once: true,
         });
+    </script>
+
+    <script>
+        const submit = document.querySelector('.screen4__btn');
+        const name = document.querySelector('input[name="iname"]');
+        const confirm = document.querySelector('select[name="confirm"]');
+        const message = document.querySelector('input[name="note"]');
+        let check = true;
+        submit.addEventListener('click', () => {
+            check = true;
+            name.parentElement.classList.remove('error');
+            name.parentElement.querySelector('.form-message').innerText = "";
+            confirm.parentElement.classList.remove('error');
+            confirm.parentElement.querySelector('.form-message').innerText = "";
+            if(name.value === '') {
+                check = false;
+                name.parentElement.classList.add('error');
+                name.parentElement.querySelector('.form-message').innerText = "Vui lòng điền tên của bạn vào nhé";
+            }
+            if(confirm.value === '') {
+                check = false;
+                confirm.parentElement.classList.add('error');
+                confirm.parentElement.querySelector('.form-message').innerText = "Vui lòng xác nhận tham dự nhé";
+            }
+            if (check === true) {
+                submit.classList.add('seeding');
+                // console.log('1');
+                sendForm({
+                    name: name.value,
+                    confirm: confirm.value,
+                    message: message.value,
+                });
+                name.value = '';
+                confirm.value = '';
+                message.value = '';
+
+                setTimeout(() => {
+                    submit.classList.remove('seeding');
+                    alert('Rất hân hạnh được đón tiếp bạn tại buổi lễ!')
+                }, 3000);
+            }
+        })
+
+        function sendForm(data) {
+            $.ajax({
+                url: "https://docs.google.com/forms/u/0/d/e/1FAIpQLSdajHeR1gme1m1-KugsNyQhH1AbKQJeUXGwMbIWOLjpxWwMcA/formResponse",
+                data: {
+                    "entry.1550966357": data.name,
+                    "entry.1961384816": data.confirm,
+                    "entry.1679509775": data.message,
+                },
+                type: "POST",
+                dataType: "json",
+                statusCode: {
+                    0: function (data) {
+                    },
+                    200: function (data) {
+                    },
+                },
+            });
+        }
     </script>
 </body>
 
