@@ -850,7 +850,7 @@ html {
   font-family: "Barlow";
 }
 
-body {
+body, html {
   overflow-x: hidden;
 }
 
