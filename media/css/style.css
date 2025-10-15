@@ -850,6 +850,10 @@ html {
   font-family: "Barlow";
 }
 
+body {
+  overflow-x: hidden;
+}
+
 .pageview {
   max-width: 420px;
   margin: 0 auto;
