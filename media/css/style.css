@@ -480,6 +480,7 @@ template {
   font-family: var(--font-2);
   font-size: 1.9rem;
   margin-bottom: 10px;
+  text-transform: uppercase;
 }
 .screen2__eventsub {
   margin-bottom: 20px;
